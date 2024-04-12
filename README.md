@@ -1,4 +1,4 @@
-# Cultiv.Hangfire &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![NuGet version (Cultiv.Hangfire)](https://img.shields.io/nuget/v/Cultiv.Hangfire.svg)](https://www.nuget.org/packages/Cultiv.Hangfire/) [![Twitter](https://img.shields.io/twitter/follow/cultiv.svg?style=social&label=Follow)](https://twitter.com/intent/follow?screen_name=cultiv)
+# Cultiv.Hangfire &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Hangfire dashboard for Umbraco
 
@@ -40,4 +40,4 @@ namespace MyNamespace
 
 In the Umbraco backoffice it will look a little something like this:
 
-![Screenshot of Cultiv.Hangfire installed in Umbraco](https://raw.githubusercontent.com/nul800sebastiaan/Cultiv.Hangfire/main/screenshot.png)
+![Screenshot of Cultiv.Hangfire installed in Umbraco](https://raw.githubusercontent.com/Cultiv/Cultiv.Hangfire/main/screenshot.png)
