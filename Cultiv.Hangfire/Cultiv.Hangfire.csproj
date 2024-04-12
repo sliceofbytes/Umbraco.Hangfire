@@ -3,6 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <ContentTargetFolders>.</ContentTargetFolders>
+        <Version>13.2.2</Version>
         <Product>Cultiv.Hangfire</Product>
         <PackageId>Cultiv.Hangfire</PackageId>
         <Title>Hangfire dashboard for Umbraco</Title>
@@ -37,5 +38,6 @@
     </ItemGroup>
     <ItemGroup>
         <None Include="../LICENSE" Pack="true" PackagePath="" />
+        <None Include="../logo.png" Pack="true" PackagePath="" />
     </ItemGroup>
 </Project>

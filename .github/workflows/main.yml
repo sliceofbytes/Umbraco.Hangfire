@@ -1,0 +1,47 @@
+name: Build and Publish NuGet package to GitHub Packages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build_and_publish:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore -c Release
+
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+
+    - name: Pack
+      run: dotnet pack --no-build -c Release --output ./nupkgs
+
+    - name: List packages
+      run: Get-ChildItem -Path "./nupkgs" -Name
+
+    - name: Authenticate with GitHub Packages
+      run: dotnet nuget add source --name "github" --username ${{ github.actor }} --password ${{ secrets.NUGET_GITHUB_PACKAGE_TOKEN }} --store-password-in-clear-text https://nuget.pkg.github.com/sliceofbytes/index.json
+
+    - name: Publish to GitHub Packages
+      run: |
+        $packages = Get-ChildItem -Path "./nupkgs" -Name
+        foreach ($package in $packages) {
+          dotnet nuget push "./nupkgs/$package" --source "github" --api-key ${{ secrets.NUGET_GITHUB_PACKAGE_TOKEN }}
+        }
+      shell: pwsh
+      env:
+        NUGET_GITHUB_PACKAGE_TOKEN: ${{ secrets.NUGET_GITHUB_PACKAGE_TOKEN }}
